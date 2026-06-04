@@ -1,0 +1,12 @@
+{
+  // Força o VS Code a formatar o arquivo automaticamente toda vez que for salvo
+  "editor.formatOnSave": true,
+
+  // Define o Prettier oficial como o formatador padrão absoluto do projeto
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Diz ao ESLint para rodar e corrigir erros de lógica/segurança automaticamente ao salvar
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  }
+}

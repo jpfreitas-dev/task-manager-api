@@ -1,0 +1,32 @@
+{
+  "name": "task-manager-api",
+  "version": "1.0.0",
+  "description": "API para gerenciamento de tarefas",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpfreitas-dev/task-manager-api.git"
+  },
+  "author": "João Paulo Freitas Pinho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jpfreitas-dev/task-manager-api/issues"
+  },
+  "homepage": "https://github.com/jpfreitas-dev/task-manager-api#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.9.1",
+    "eslint": "^10.4.1",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.8.3",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.60.1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

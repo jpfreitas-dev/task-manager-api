@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    // Ambientes de execução
+    "target": "es2022",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+
+    // Estrutura de pastas
+    "rootDir": "./src",
+    "outDir": "./build",
+
+    // Resolução de módulos
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
+    // Rigor do sistema de tipos
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+
+    // Erros para variáveis e parâmetros não utilizados
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    // Interoperabilidade e Segurança
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "build"]
+}
