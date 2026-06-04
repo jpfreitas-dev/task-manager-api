@@ -7,13 +7,13 @@ export default tseslint.config(
     ignores: ['build/', 'node_modules/'],
   },
 
-  // Aplica as regras recomendadas do ESLint para JavaScript
+  // Enable the recommended ESLint rules for JavaScript
   eslint.configs.recommended,
 
-  // Aplica as regras recomendadas do ESLint para TypeScript
+  // Enable the recommended ESLint rules for TypeScript
   ...tseslint.configs.recommended,
 
-  // Configuração específica para os arquivos TypeScript
+  // Specific configuration for TypeScript files
   {
     files: ['**/*.ts'],
     languageOptions: {
@@ -23,14 +23,14 @@ export default tseslint.config(
       },
     },
     rules: {
-      '@typescript-eslint/no-floating-promises': 'error', // Regra de segurança para garantir o uso correto de Promises (ex: chamadas do Prisma)
+      '@typescript-eslint/no-floating-promises': 'error', // Ensure that promises are handled properly to avoid unhandled rejections
 
-      '@typescript-eslint/no-explicit-any': 'error', // Força boas práticas proibindo o uso de 'any' para não quebrar o propósito do TS
+      '@typescript-eslint/no-explicit-any': 'error', // Ensure type safety by preventing the use of 'any'
 
-      'no-console': 'warn', // Emite um aviso para evitar console.logs esquecidos em produção
+      'no-console': 'warn', // Emit a warning to avoid forgotten console.logs in production
     },
   },
 
-  // Aplica o desativador de conflitos do Prettier
+  // Enable Prettier to automatically format code and avoid conflicts with ESLint rules
   eslintConfigPrettier,
 );
