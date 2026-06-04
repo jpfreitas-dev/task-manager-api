@@ -4,7 +4,9 @@
   "description": "API para gerenciamento de tarefas",
   "main": "index.js",
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "dev": "tsx watch src/server.ts"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jpfreitas-dev/task-manager-api.git"

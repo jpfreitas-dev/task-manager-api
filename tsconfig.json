@@ -1,16 +1,18 @@
 {
   "compilerOptions": {
     // Environment of execution
-    "target": "es2022",
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
+    "target": "ES2022",
+    "lib": ["ES2023"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+
     "types": ["node"],
 
     // Folder structure
     "rootDir": "./src",
     "outDir": "./build",
 
-    // Module resolution
+    // Path aliases
     "paths": {
       "@/*": ["./src/*"]
     },
@@ -22,7 +24,6 @@
 
     // Errors and Warnings for Unused Code
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
 
     // Compatibility and Interoperability
     "esModuleInterop": true,
