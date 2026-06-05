@@ -6,3 +6,83 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+enum role {
+  MEMBER
+  ADMIN
+}
+
+enum status {
+  pending
+  in_progress
+  completed
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      role     @default(MEMBER)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  teamMembers TeamMember[]
+  tasks       Task[]
+
+  @@map("users")
+}
+
+model Team {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  teamMembers TeamMember[]
+  tasks       Task[]
+
+  @@map("teams")
+}
+
+model TeamMember {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  teamId    String   @map("team_id")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade) 
+  team Team @relation(fields: [teamId], references: [id], onDelete: Cascade)
+
+  @@map("team_members")
+}
+
+model Task {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  status      status   @default(pending)
+  assignedTo  String?  @map("assigned_to")
+  teamId      String?   @map("team_id")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  user    User?        @relation(fields: [assignedTo], references: [id], onDelete: SetNull)
+  team    Team?        @relation(fields: [teamId], references: [id], onDelete: SetNull)
+  history TaskHistory[]
+
+  @@map("tasks")
+}
+
+model TaskHistory {
+  id        String   @id @default(uuid())
+  taskId    String   @map("task_id")
+  oldStatus status   @map("old_status")
+  newStatus status   @map("new_status")
+  changedAt DateTime @default(now()) @map("changed_at")
+
+  task Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
+
+  @@map("task_histories")
+}
