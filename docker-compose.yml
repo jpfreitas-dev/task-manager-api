@@ -1,0 +1,32 @@
+services:
+  database:
+    image: bitnami/postgresql:latest
+    container_name: task_manager_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: task_manager_db
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata:/bitnami/postgresql
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: task_manager_api
+    restart: always
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@database:5432/task_manager_db?schema=public
+    depends_on:
+      - database
+
+volumes:
+  pgdata:
