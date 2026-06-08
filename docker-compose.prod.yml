@@ -1,0 +1,16 @@
+services:
+  database:
+    ports: !reset []
+    environment:
+      POSTGRES_USER: ${PROD_DB_USER}
+      POSTGRES_PASSWORD: ${PROD_DB_PASS}
+      POSTGRES_DB: ${PROD_DB_NAME}
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    volumes: !reset []
+    environment:
+      - DATABASE_URL=postgresql://${PROD_DB_USER}:${PROD_DB_PASS}@database:5432/${PROD_DB_NAME}?schema=public
