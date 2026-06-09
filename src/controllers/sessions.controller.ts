@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { CreateUserSessionService } from '@/services/users/create-user-session.service';
 import { ShowUserProfileService } from '@/services/users/show-user-profile.service';
 
-class SessionsController {
+export class SessionsController {
   async create(req: Request, res: Response) {
     const bodySchema = z.object({
       email: z.email(),

@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { z } from 'zod';
 import { CreateUserService } from '@/services/users/create-user.service';
 
-class UsersController {
+export class UsersController {
   async create(req: Request, res: Response) {
     const bodySchema = z.object({
       name: z.string().min(3),
@@ -18,5 +18,3 @@ class UsersController {
     return res.status(201).json(user);
   }
 }
-
-export default UsersController;
