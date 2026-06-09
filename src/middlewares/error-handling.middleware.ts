@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { AppError } from '@/utils/AppError';
-import { ZodError } from 'zod';
-import { z } from 'zod';
+import { AppError } from '@/utils/app-error';
+import { ZodError, z } from 'zod';
 
 function errorHandlingMiddleware(
   error: Error,
