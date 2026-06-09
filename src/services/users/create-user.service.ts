@@ -33,5 +33,3 @@ export class CreateUserService {
     return userWithoutPassword;
   }
 }
-
-export default CreateUserService;
