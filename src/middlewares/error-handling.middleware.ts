@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { AppError } from '@/utils/app-error';
 import { ZodError, z } from 'zod';
 
-function errorHandlingMiddleware(
+export function errorHandlingMiddleware(
   error: Error,
   req: Request,
   res: Response,
@@ -25,5 +25,3 @@ function errorHandlingMiddleware(
     message: 'Internal server error',
   });
 }
-
-export { errorHandlingMiddleware };
