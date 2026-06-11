@@ -23,7 +23,6 @@ export function ensureUserAuthentication(
   const [, token] = authHeader.split(' ');
 
   try {
-    // Usando o objeto completo jwt para garantir compatibilidade no Docker
     const decoded = jwt.verify(token, authConfig.jwt.secret) as TokenPayload;
 
     const { role, sub: user_id } = decoded;
