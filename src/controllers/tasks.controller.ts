@@ -37,15 +37,15 @@ export class TasksController {
       status: z.enum(['pending', 'in_progress', 'completed']).optional(),
       priority: z.enum(['low', 'medium', 'high']).optional(),
       teamId: z.uuid().optional(),
+      assignedTo: z.uuid().optional(),
       showMyTasks: z
         .string()
         .optional()
         .transform((value) => value === 'true'),
     });
 
-    const { status, priority, teamId, showMyTasks } = querySchema.parse(
-      req.query,
-    );
+    const { status, priority, teamId, assignedTo, showMyTasks } =
+      querySchema.parse(req.query);
     const { id: userId, role } = req.user;
 
     const indexTasksService = new IndexTasksService();
@@ -53,6 +53,7 @@ export class TasksController {
       status,
       priority,
       teamId,
+      assignedTo,
       showMyTasks,
       userId,
       role,
